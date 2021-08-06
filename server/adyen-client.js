@@ -1,15 +1,22 @@
-const { Client, Config, CheckoutAPI } = require("@adyen/api-library");
 const dotenv = require("dotenv");
+const axios = require("axios");
 
 dotenv.config();
 
-const config = new Config({
-  endpoint: process.env.PAYPAL_ENDPOINT,
+const config = {
   apiKey: process.env.PAYPAL_API_KEY,
-  merchantAccount: process.env.PAYPAL_MERCHANT_ACCOUNT
-});
-const client = new Client({ config });
-client.setEnvironment(process.env.PAYPAL_ENVIRONMENT);
-const checkout = new CheckoutAPI(client);
+  checkoutEndpoint: process.env.PAYPAL_ENDPOINT,
+  environment: process.env.PAYPAL_ENVIRONMENT
+};
 
-module.exports = checkout
+const client = axios.create({
+  baseURL: config.checkoutEndpoint,
+  headers: {
+    "X-API-Key": config.apiKey
+  }
+});
+
+module.exports = {
+  payments: (body) => client.post(config.checkoutEndpoint, body).then(response => response.data),
+  paymentsDetails: (body) => client.post(`${config.checkoutEndpoint}/details`, body).then(response => response.data)
+};

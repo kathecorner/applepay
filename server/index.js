@@ -1,8 +1,9 @@
 const express = require("express");
 const { paymentDetailsHandler, paymentHandler } = require("./handlers/payment");
-const dotenv = require("dotenv");
+require("dotenv").config();
+require("./hijack")();
 
-dotenv.config();
+
 const app = express();
 const port = 3010;
 
