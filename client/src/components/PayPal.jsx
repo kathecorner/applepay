@@ -47,10 +47,6 @@ const PayPal = () => {
           merchantId: process.env.REACT_APP_PAYPAL_MERCHANT_ID,
           intent: "authorize",
         },
-        amount: {
-          currency: process.env.REACT_APP_CURRENCY,
-          value: amount,
-        },
         onSubmit: (state, component) => {
           // Your function calling your server to make the /payments request.
           makePayment(state.data, {

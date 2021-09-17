@@ -2,7 +2,10 @@ const checkout = require("../adyen-client");
 
 const paymentHandler = async (req, res) => {
   const adyenResponse = await checkout.payments({
-    amount: req.body.amount,
+    amount: {
+      currency: "USD",
+      value: "1000"
+    },
     paymentMethod: req.body.paymentMethod,
     reference: "TEST_2",
     merchantAccount: process.env.PAYPAL_MERCHANT_ACCOUNT
