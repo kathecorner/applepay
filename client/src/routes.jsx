@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PaymentAmount from "./components/PaymentAmount";
-import PayPal from "./components/PayPal";
+import ApplePay from "./components/ApplePay";
 
 const Routes = () => (
   <Router>
@@ -10,7 +10,7 @@ const Routes = () => (
         <PaymentAmount />
       </Route>
       <Route exact path="/payment">
-        <PayPal />
+        <ApplePay />
       </Route>
     </Switch>
   </Router>

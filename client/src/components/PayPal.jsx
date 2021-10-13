@@ -30,21 +30,21 @@ const showFinalResult = (response) => {
 
 const configuration = {
   locale: process.env.REACT_APP_LOCALE,
-  environment: process.env.REACT_APP_PAYPAL_ENVIRONMENT,
-  clientKey: process.env.REACT_APP_PAYPAL_CLIENT_KEY,
+  environment: process.env.REACT_APP_APPLEPAY_ENVIRONMENT,
+  clientKey: process.env.REACT_APP_APPLEPAY_CLIENT_KEY,
 };
 
-const PayPal = () => {
+const ApplePay = () => {
   const [amount] = useContext(PaymentAmountContext);
 
   useEffect(() => {
     const checkout = new AdyenCheckout(configuration);
     checkout
-      .create("paypal", {
-        environment: process.env.REACT_APP_PAYPAL_ENVIRONMENT,
+      .create("applepay", {
+        environment: process.env.REACT_APP_APPLEPAY_ENVIRONMENT,
         countryCode: process.env.REACT_APP_COUNTRY.toUpperCase(),
         configuration: {
-          merchantId: process.env.REACT_APP_PAYPAL_MERCHANT_ID,
+          merchantId: process.env.REACT_APP_APPLEPAY_MERCHANT_ID,
           intent: "authorize",
         },
         onSubmit: (state, component) => {
@@ -67,7 +67,7 @@ const PayPal = () => {
             });
         },
         onCancel: (data, component) => {
-          // Sets your prefered status of the component when a PayPal payment is cancelled. In this example, return to the initial state.
+          // Sets your prefered status of the component when a ApplePay payment is cancelled. In this example, return to the initial state.
           component.setStatus("ready");
         },
         onError: (error, component) => {
@@ -82,7 +82,7 @@ const PayPal = () => {
           });
         },
       })
-      .mount("#paypal-container");
+      .mount("#applepay-container");
   }, []);
 
   return (
@@ -95,9 +95,9 @@ const PayPal = () => {
         flexDirection: "column",
       }}
     >
-      <div id="paypal-container" />
+      <div id="applepay-container" />
     </div>
   );
 };
 
-export default PayPal;
+export default ApplePay;

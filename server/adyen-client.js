@@ -4,9 +4,9 @@ const axios = require("axios");
 dotenv.config();
 
 const config = {
-  apiKey: process.env.PAYPAL_API_KEY,
-  checkoutEndpoint: process.env.PAYPAL_ENDPOINT,
-  environment: process.env.PAYPAL_ENVIRONMENT
+  apiKey: process.env.APPLEPAY_API_KEY,
+  checkoutEndpoint: process.env.APPLEPAY_ENDPOINT,
+  environment: process.env.APPLEPAY_ENVIRONMENT
 };
 
 const client = axios.create({

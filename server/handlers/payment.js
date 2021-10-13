@@ -8,7 +8,7 @@ const paymentHandler = async (req, res) => {
     },
     paymentMethod: req.body.paymentMethod,
     reference: "TEST_2",
-    merchantAccount: process.env.PAYPAL_MERCHANT_ACCOUNT
+    merchantAccount: process.env.APPLEPAY_MERCHANT_ACCOUNT
   }).catch(error => console.log("Error while sending request to Adyen: ", error));
 
   return res.json(adyenResponse);
