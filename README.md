@@ -1,16 +1,16 @@
 ## Purpose
-To test out PayPal Adyen integration
+To test out Apple Pay Adyen integration
 
-## Setup
+## Setup (Work in progress)
 1. Add .env files in both `client` and `server` directories. Will share the environment variables over slack.
 2. Add the following to your hosts file
    ```
-   127.0.0.1    test.paypal.com
+   127.0.0.1    test.applepay.com
    ```
 3. Add the following to your nginx.conf
    ```
    server {
-        server_name test.paypal.com;
+        server_name test.applepay.com;
         listen  80;
 
         location ~ /api/ {    
@@ -32,4 +32,4 @@ To test out PayPal Adyen integration
    cd client 
    yarn start
    ```
-6. Visit http://test.paypal.com
+6. Visit http://test.applepay.com
