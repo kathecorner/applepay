@@ -1,27 +1,13 @@
 ## Purpose
-To test out ApplePay Adyen integration
+To test out Apple Pay Adyen integration
 
-## Setup
+## Setup (Work in progress)
 1. Add .env files in both `client` and `server` directories. Will share the environment variables over slack.
-2. Add the following to your hosts file
-   ```
-   127.0.0.1    test.applepay.com
-   ```
-3. Add the following to your nginx.conf
-   ```
-   server {
-        server_name test.applepay.com;
-        listen  80;
-
-        location ~ /api/ {    
-          proxy_pass http://localhost:3010;
-        }
-
-        location ~ / {
-          proxy_pass http://localhost:3011;
-        }
-   }
-   ```
+2. We will be testing on Safari.
+3. Do `brew install mkcert` for adding https certificate for Applepay button to get rendered.
+   a) Do mkcert -install
+   b) mkcert localhost
+   
 4. In a terminal
    ```
    cd server 
@@ -32,4 +18,4 @@ To test out ApplePay Adyen integration
    cd client 
    yarn start
    ```
-6. Visit http://test.applepay.com
+6. Visit https://localhost:3000/payment
